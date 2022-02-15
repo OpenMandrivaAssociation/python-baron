@@ -1,29 +1,38 @@
-%global pypi_name baron
+%define module baron
 
-Name:           python-%{pypi_name}
-Version:        0.9
-Release:        1
-Summary:        IDE allow you to refactor code, Baron allows you to write refactoring code.
-License:        LGPLv3
-URL:            https://github.com/PyCQA/baron
-Source:         https://files.pythonhosted.org/packages/a7/51/19d574b7ab82c1bb883d932150a285f9c5ffed87883fb1996894cb5d7e4a/baron-%{version}.tar.gz
-BuildArch:      noarch
-BuildRequires:  pkgconfig(python)
-BuildRequires:  python3dist(setuptools)
+Summary:	A Full Syntax Tree (FST) library for Python
+Name:		python-%{module}
+Version:	0.10.1
+Release:	1
+License:	LGPLv3+
+Url:		https://github.com/PyCQA/baron
+Group:		Development/Languages/Python
+Source:		https://files.pythonhosted.org/packages/source/b/%{module}/%{module}-%{version}.tar.gz
 
-Requires: python3dist(rply)
+BuildRequires:	pkgconfig(python3)
+BuildRequires:	python3dist(rply)
+BuildRequires:	python3dist(setuptools)
+# docs
+#BuildRequires:	python3dist(ipython)
+#BuildRequires:	python3dist(matplotlib)
+#BuildRequires:	python3dist(sphinx)
 
-Provides:	python-%{pypi_name} = %{EVRD}
+BuildArch:	noarch
 
 %description
-Baron is a Full Syntax Tree (FST) library for Python. 
-By opposition to an AST which drops some syntax information in the process of its creation (like empty lines, comments, formatting), 
-a FST keeps everything and guarantees the operation fst_to_code(code_to_fst(source_code)) == source_code.
+Baron is a Full Syntax Tree (FST) library for Python. By opposition to an
+AST which drops some syntax information in the process of its creation (like
+empty lines, comments, formatting), a FST keeps everything and guarantees
+the operation fst_to_code(code_to_fst(source_code)) == source_code.
+
+%files
+%doc README.md
+%{python_sitelib}/*
+
+#----------------------------------------------------------------------------
 
 %prep
-%autosetup -n %{pypi_name}-%{version}
-rm -vrf *.egg-info
-sed -i -e 's/\r//' README.md
+%autosetup -n %{module}-%{version}
 
 %build
 %py_build
@@ -31,7 +40,3 @@ sed -i -e 's/\r//' README.md
 %install
 %py_install
 
-%files -n python-%{pypi_name}
-%{python_sitelib}/%{pypi_name}/
-%{python_sitelib}/%{pypi_name}-*.egg-info/
-#{python_sitelib}/__pycache__/*
