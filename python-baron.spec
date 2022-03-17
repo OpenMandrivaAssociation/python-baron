@@ -3,7 +3,7 @@
 Summary:	A Full Syntax Tree (FST) library for Python
 Name:		python-%{module}
 Version:	0.10.1
-Release:	1
+Release:	2
 License:	LGPLv3+
 Url:		https://github.com/PyCQA/baron
 Group:		Development/Languages/Python
@@ -25,10 +25,6 @@ AST which drops some syntax information in the process of its creation (like
 empty lines, comments, formatting), a FST keeps everything and guarantees
 the operation fst_to_code(code_to_fst(source_code)) == source_code.
 
-%files
-%doc README.md
-%{python_sitelib}/*
-
 #----------------------------------------------------------------------------
 
 %prep
@@ -40,3 +36,7 @@ the operation fst_to_code(code_to_fst(source_code)) == source_code.
 %install
 %py_install
 
+%files
+%doc README.md
+%{python_sitelib}/%{pypi_name}/
+%{python_sitelib}/%{pypi_name}-*.egg-info/
