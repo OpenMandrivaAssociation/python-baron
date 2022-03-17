@@ -38,5 +38,5 @@ the operation fst_to_code(code_to_fst(source_code)) == source_code.
 
 %files
 %doc README.md
-%{python_sitelib}/%{pypi_name}/
-%{python_sitelib}/%{pypi_name}-*.egg-info/
+%{python_sitelib}/%{module}/
+%{python_sitelib}/%{module}-*.egg-info/
