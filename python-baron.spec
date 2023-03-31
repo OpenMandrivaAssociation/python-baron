@@ -3,7 +3,7 @@
 Summary:	A Full Syntax Tree (FST) library for Python
 Name:		python-%{module}
 Version:	0.10.1
-Release:	2
+Release:	3
 License:	LGPLv3+
 Url:		https://github.com/PyCQA/baron
 Group:		Development/Languages/Python
